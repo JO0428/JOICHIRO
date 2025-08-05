@@ -27,27 +27,27 @@
     <div class="image-container slideshow-container">
       <div class="slide-track" id="slideTrack">
         <figure>
-          <img src="img/img-01.png" alt="VEGETAWARS" data-gallery="vege">
+          <img src="img/img-01.jpg" alt="VEGETAWARS" data-gallery="vege">
           <figcaption>VEGETAWARS (COMIC ART)</figcaption>
         </figure>
         <figure>
-          <img src="img/img-02.png" alt="アホン" data-gallery="AHO">
+          <img src="img/img-02.jpg" alt="アホン" data-gallery="AHO">
           <figcaption>アホン (COMEDY ART)</figcaption>
         </figure>
         <figure>
-          <img src="img/img-03.png" alt="いきもじ" data-gallery="IK">
+          <img src="img/img-03.jpg" alt="いきもじ" data-gallery="IK">
           <figcaption>いきもじ (JAPANESE ART)</figcaption>
         </figure>
         <figure>
-          <img src="img/img-04.png" alt="other art 2019~2025" data-gallery="ON">
+          <img src="img/img-04.jpg" alt="other art 2019~2025" data-gallery="ON">
           <figcaption>2019~2025 (OTHER ART)</figcaption>
         </figure>
         <figure>
-          <img src="img/img-05.png" alt="日本満開" data-gallery="jap">
+          <img src="img/img-05.jpg" alt="日本満開" data-gallery="jap">
           <figcaption>日本満開 (JAPANESE ART)</figcaption>
         </figure>
         <figure>
-          <img src="img/img-06.png" alt="怪欲" data-gallery="kai">
+          <img src="img/img-06.jpg" alt="怪欲" data-gallery="kai">
           <figcaption>怪欲 (JAPANESE ART)</figcaption>
         </figure>
       </div>
@@ -212,12 +212,12 @@
 
     // ギャラリーデータ
     const galleries = {
-      vege: Array.from({ length: 22 }, (_, i) => `img/vege${i + 1}.png`),
-      AHO: Array.from({ length: 9 }, (_, i) => `img/AHO-${String(i + 1).padStart(2, '0')}.png`),
-      IK: ['img/IK-01.png', 'img/IK-02.png', 'img/IK-03.png','img/IK-04.png'],
-      ON: Array.from({ length: 8}, (_, i) => `img/ON-${String(i + 1).padStart(2, '0')}.png`),
-      jap: Array.from({ length: 5}, (_, i) => `img/JAP-${String(i + 1).padStart(2, '0')}.png`),
-      kai: Array.from({ length: 6 }, (_, i) => `img/KAI-${String(i + 1).padStart(2, '0')}.png`)
+      vege: Array.from({ length: 22 }, (_, i) => `img/vege${i + 1}.jpg`),
+      AHO: Array.from({ length: 9 }, (_, i) => `img/AHO-${String(i + 1).padStart(2, '0')}.jpg`),
+      IK: ['img/IK-01.jpg', 'img/IK-02.jpg', 'img/IK-03.jpg','img/IK-04.jpg'],
+      ON: Array.from({ length: 8}, (_, i) => `img/ON-${String(i + 1).padStart(2, '0')}.jpg`),
+      jap: Array.from({ length: 5}, (_, i) => `img/JAP-${String(i + 1).padStart(2, '0')}.jpg`),
+      kai: Array.from({ length: 6 }, (_, i) => `img/KAI-${String(i + 1).padStart(2, '0')}.jpg`)
     };
 
     // モーダル要素
@@ -437,7 +437,7 @@ document.getElementById('joyArtTrigger').addEventListener('click', function () {
   const modal = document.getElementById('galleryModal');
   const modalImage = document.getElementById('galleryImage');
 
-  modalImage.src = 'img/img-07.png';
+  modalImage.src = 'img/img-07.jpg';
   modal.style.display = 'flex';
 
   // ナビゲーション非表示
@@ -458,3 +458,4 @@ document.getElementById('joyArtTrigger').addEventListener('click', function () {
 
 </body>
 </html>
+

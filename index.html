@@ -120,7 +120,7 @@
  <p class="author-name">大野丈一郎　Official Website</p>
 
   <div class="middle-text">
-  <p id="comicArt" class="">COMIC ART</p>
+  <p id="comicArt">COMIC ART</p>
   <div id="comicArtDisplay" class="display-text"></div>
 
   <p id="comedyArt">COMEDY ART</p>
@@ -165,6 +165,7 @@
     <button class="wide-next">›</button>
     <button class="close-btn">×</button>
   </div>
+	
 <script>
   // すべてのテキスト要素に hover-slide を追加（読み込み時）
   window.addEventListener('DOMContentLoaded', () => {
@@ -175,6 +176,207 @@
       }
     });
   });
+	
+	/ スワイプガイド（どちらのモーダルでも使える）
+(function () {
+  // --- 設定 ---
+  const SWIPE_HINT_STORAGE_KEY = 'joichiro_swipe_hint_shown_v1';
+  let SHOW_HINT_ONLY_ON_TOUCH = true; // デスクトップで見たいときは false にする
+
+  function isTouchDevice() {
+    return ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  }
+
+  // DOM 要素（存在しなければ later lookup でも取得できるようにする）
+  function getModalEl() {
+    return document.getElementById('galleryModal') || window.modal || null;
+  }
+  function getModalImageEl() {
+    return document.getElementById('galleryImage') || window.modalImage || null;
+  }
+  function getModalPrevEl() {
+    return document.getElementById('modalPrev') || window.modalPrevBtn || null;
+  }
+  function getModalNextEl() {
+    return document.getElementById('modalNext') || window.modalNextBtn || null;
+  }
+  function getWideBox() {
+    return document.getElementById('wideSlideshow') || window.wideSlideshow || null;
+  }
+  function getWideContainer() {
+    return document.querySelector('.wide-scroll-container') || window.wideScrollContainer || null;
+  }
+
+  // --- スワイプヒント表示関数 ---
+  function showSwipeHint(modalElement, options = {}) {
+    try {
+      if (!modalElement) {
+        console.warn('showSwipeHint: modalElement が null');
+        return;
+      }
+      const force = !!options.force;
+      if (SHOW_HINT_ONLY_ON_TOUCH && !isTouchDevice() && !force) {
+        // タッチ端末のみ表示 ⇒ デスクトップでは出さない（force なら出す）
+        return;
+      }
+
+      // localStorage に保存済みならスキップ（forceなら無視）
+      try {
+        if (!force && localStorage.getItem(SWIPE_HINT_STORAGE_KEY)) return;
+      } catch (e) {
+        // private モード等で localStorage が使えない場合は続行（表示はする）
+        console.warn('localStorage にアクセスできません:', e);
+      }
+
+      // 重複削除
+      const existing = modalElement.querySelectorAll('.swipe-hint');
+      existing.forEach(n => n.remove());
+
+      const hint = document.createElement('div');
+      hint.className = 'swipe-hint';
+      hint.textContent = 'スワイプ →'; // 軽い指示 + 右矢印
+
+      // 挿入先によって位置指定を調整する
+      const isBody = (modalElement === document.body || modalElement === document.documentElement);
+      if (isBody) {
+        // body に置く（fixedで下中央）
+        hint.style.position = 'fixed';
+        hint.style.left = '50%';
+        hint.style.bottom = '32px';
+        hint.style.transform = 'translateX(-50%) translateY(8px)';
+        modalElement.appendChild(hint);
+      } else {
+        // モーダル内部に absolute で置く（modalElement が static の場合は temporary に relative にする）
+        const cs = window.getComputedStyle(modalElement);
+        let reverted = false;
+        if (cs.position === 'static') {
+          modalElement.dataset._prevPositionForHint = 'static';
+          modalElement.style.position = 'relative';
+          reverted = true;
+        }
+        hint.style.position = 'absolute';
+        hint.style.left = '50%';
+        hint.style.bottom = '32px';
+        hint.style.transform = 'translateX(-50%) translateY(8px)';
+        modalElement.appendChild(hint);
+
+        // 後で元に戻す（ヒントが消えたタイミングで）
+        if (reverted) {
+          setTimeout(() => {
+            try {
+              if (modalElement.dataset._prevPositionForHint === 'static') {
+                modalElement.style.position = 'static';
+                delete modalElement.dataset._prevPositionForHint;
+              }
+            } catch (e) { /* ignore */ }
+          }, 2600);
+        }
+      }
+
+      // 表示トランジション
+      requestAnimationFrame(() => hint.classList.add('show'));
+
+      // 2秒後にフェードアウトして削除
+      const duration = (options.duration && Number(options.duration)) || 2000;
+      setTimeout(() => {
+        hint.classList.remove('show');
+        hint.classList.add('fade-out');
+        setTimeout(() => {
+          try { hint.remove(); } catch (e) {}
+        }, 480);
+      }, duration);
+
+      // localStorage にセット（例外は無視）
+      try {
+        localStorage.setItem(SWIPE_HINT_STORAGE_KEY, '1');
+      } catch (e) {
+        // 無視
+      }
+      // ログ（デバッグ用）
+      if (window.console) console.log('showSwipeHint: shown on', modalElement, 'force=', force);
+    } catch (err) {
+      console.warn('showSwipeHint error:', err);
+    }
+  }
+
+  // --- openModal (通常モーダル) を上書き/提供 ---
+  window.openModal = function (name, opts = {}) {
+    try {
+      const galleries = window.galleries || window.__galleries || {};
+      window.modalGallery = galleries[name] || [];
+      if (!window.modalGallery || !window.modalGallery.length) {
+        console.warn('openModal: gallery empty for', name);
+        return;
+      }
+      window.modalIndex = 0;
+      const modalEl = getModalEl();
+      const imgEl = getModalImageEl();
+
+      if (!modalEl || !imgEl) {
+        console.warn('openModal: モーダル要素が見つかりません');
+        return;
+      }
+
+      imgEl.src = window.modalGallery[window.modalIndex];
+      modalEl.style.display = 'flex';
+      const prev = getModalPrevEl(); if (prev) prev.style.display = 'block';
+      const next = getModalNextEl(); if (next) next.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      if (typeof window.pauseSlideshow === 'function') window.pauseSlideshow();
+
+      showSwipeHint(modalEl, { force: !!opts.forceHint, duration: opts.duration });
+    } catch (e) {
+      console.error('openModal error', e);
+    }
+  };
+
+  // 互換名（もし他所で openNormalModal を使っていれば）
+  window.openNormalModal = function (name, opts = {}) {
+    return window.openModal(name, opts);
+  };
+
+  // --- openWideModal (横長) を上書き/提供 ---
+  window.openWideModal = function (images, opts = {}) {
+    try {
+      const wideBox = getWideBox();
+      const wideContainer = getWideContainer();
+      if (!wideBox || !wideContainer) {
+        console.warn('openWideModal: wide elements not found');
+        return;
+      }
+      wideContainer.innerHTML = '';
+      images.forEach(src => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        img.style.display = 'inline-block';
+        img.style.userSelect = 'none';
+        wideContainer.appendChild(img);
+      });
+
+      wideBox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      if (typeof window.pauseSlideshow === 'function') window.pauseSlideshow();
+
+      showSwipeHint(wideBox, { force: !!opts.forceHint, duration: opts.duration });
+    } catch (e) {
+      console.error('openWideModal error', e);
+    }
+  };
+
+  // --- デバッグ用: localStorage フラグをリセットする関数を公開 ---
+  window.resetSwipeHintFlag = function () {
+    try {
+      localStorage.removeItem(SWIPE_HINT_STORAGE_KEY);
+      console.log('Swipe hint flag reset');
+    } catch (e) { console.warn(e); }
+  };
+
+  // Export status
+  if (window.console) console.log('swipe-hint ready (SHOW_HINT_ONLY_ON_TOUCH=', SHOW_HINT_ONLY_ON_TOUCH, ')');
+})();
+
+
 </script>
 
   <script>
@@ -500,27 +702,112 @@ document.getElementById('joyArtTrigger').addEventListener('click', function () {
   pauseSlideshow(); // ← ✅定義済みの関数に変更
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.querySelector(".menu-toggle");
+  const menu = document.querySelector(".menu-items");
+  const overlay = document.querySelector(".menu-overlay");
 
+  // ☰ ボタンクリックで開閉
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("show");
+    overlay.classList.toggle("show");
+  });
+
+  // オーバーレイをクリックしたら閉じる
+  overlay.addEventListener("click", () => {
+    menu.classList.remove("show");
+    overlay.classList.remove("show");
+  });
+
+  // メニュー内リンクをクリックしたら閉じる
+  document.querySelectorAll(".menu-items a").forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("show");
+      overlay.classList.remove("show");
+    });
+  });
+});
+// ハンバーガーメニューのリンク → ギャラリーを開く
+document.querySelectorAll('.menu-items a[data-gallery]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const galleryName = link.getAttribute('data-gallery');
+    if (galleryName === 'IK') {
+      openWideModal(galleries[galleryName]); // 横長モーダル
+    } else {
+      openModal(galleryName); // 通常モーダル
+    }
+    // メニューを閉じる
+    document.querySelector('.menu-items').classList.remove('show');
+    document.querySelector('.menu-overlay').classList.remove('show');
+  });
+});
+
+// スライドショー画像をスマホ用に差し替え
+function updateSlideshowImages() {
+  const isMobile = window.innerWidth <= 768; // スマホ判定
+
+  const slideImages = document.querySelectorAll('#slideTrack img');
+  slideImages.forEach((img, index) => {
+    const original = `img/img-0${index + 1}.jpg`;
+    const small = `img/Simg-0${index + 1}.jpg`;
+
+    if (isMobile) {
+      // スマホ用に切り替え
+      if (img.src.includes(original)) {
+        img.src = small;
+      }
+    } else {
+      // PC用に戻す
+      if (img.src.includes(`Simg-0${index + 1}.jpg`)) {
+        img.src = original;
+      }
+    }
+  });
+}
+
+// 読み込み時とリサイズ時に実行
+window.addEventListener('DOMContentLoaded', updateSlideshowImages);
+window.addEventListener('resize', updateSlideshowImages);
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleSwipe() {
+  const swipeThreshold = 50; // どれくらい動いたらスワイプと判定するか(px)
+  if (touchEndX < touchStartX - swipeThreshold) {
+    // 左にスワイプ → 次の画像
+    modalNext();
+  }
+  if (touchEndX > touchStartX + swipeThreshold) {
+    // 右にスワイプ → 前の画像
+    modalPrev();
+  }
+}
+
+// モーダル画像にタッチイベントを登録
+modalImage.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+modalImage.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+	  // ===== 横長モーダル (#wideSlideshow) 慣性スクロール対応 =====
+let wideStartX = 0;
+let wideScrollLeft = 0;
+
+wideScrollContainer.addEventListener("touchstart", e => {
+  wideStartX = e.touches[0].pageX;
+  wideScrollLeft = wideScrollContainer.scrollLeft;
+}, { passive: true });
+
+wideScrollContainer.addEventListener("touchmove", e => {
+  const dx = e.touches[0].pageX - wideStartX;
+  wideScrollContainer.scrollLeft = wideScrollLeft - dx;
+}, { passive: true });
+	 
 
 </script>
-
-
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "大野丈一郎",
-    "alternateName": "JOICHIRO",
-    "url": "https://jo0428.github.io/OHNO-JOICHIRO/",
-    "jobTitle": "Artist / Illustrator",
-    "sameAs": [
-      "https://www.instagram.com/あなたのアカウント",
-      "https://twitter.com/あなたのアカウント"
-    ]
-  }
-  </script>
-
 </body>
 </html>
-

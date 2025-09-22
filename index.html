@@ -588,7 +588,7 @@ document.querySelectorAll('.menu-items a[data-gallery]').forEach(link => {
 
 // スライドショー画像をスマホ用に差し替え
 function updateSlideshowImages() {
-  const isMobile = window.innerWidth <= 768; // スマホ判定
+  const isMobile = window.innerWidth <= 1200; // スマホ判定
 
   const slideImages = document.querySelectorAll('#slideTrack img');
   slideImages.forEach((img, index) => {
@@ -659,7 +659,7 @@ function testHint() {
   // 新規作成
   const hint = document.createElement('div');
   hint.className = 'swipe-hint';
-  hint.textContent = '→ スワイプできます';
+  hint.textContent = 'スワイプできます →';
 
   // 画面固定スタイル
   hint.style.position = 'fixed';

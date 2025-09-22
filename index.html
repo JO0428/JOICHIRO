@@ -165,6 +165,8 @@
     <button class="wide-next">›</button>
     <button class="close-btn">×</button>
   </div>
+	<!-- スワイプガイド -->
+
 	
 <script>
   // すべてのテキスト要素に hover-slide を追加（読み込み時）
@@ -177,204 +179,37 @@
     });
   });
 	
-	/ スワイプガイド（どちらのモーダルでも使える）
-(function () {
-  // --- 設定 ---
-  const SWIPE_HINT_STORAGE_KEY = 'joichiro_swipe_hint_shown_v1';
-  let SHOW_HINT_ONLY_ON_TOUCH = true; // デスクトップで見たいときは false にする
+	
+	function showSwipeGuide() {
+  const guide = document.getElementById("swipeGuide");
+  if (!guide) return;
 
-  function isTouchDevice() {
-    return ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  guide.classList.add("show");
+
+  // 2秒後にフェードアウト
+  setTimeout(() => {
+    guide.classList.remove("show");
+  }, 2000);
+}
+
+// 通常モーダル
+const originalOpenModal = window.openModal;
+window.openModal = function(name) {
+  if (typeof originalOpenModal === "function") {
+    originalOpenModal(name);
   }
+  showSwipeGuide();
+};
 
-  // DOM 要素（存在しなければ later lookup でも取得できるようにする）
-  function getModalEl() {
-    return document.getElementById('galleryModal') || window.modal || null;
+// 横長モーダル
+const originalOpenWideModal = window.openWideModal;
+window.openWideModal = function(images) {
+  if (typeof originalOpenWideModal === "function") {
+    originalOpenWideModal(images);
   }
-  function getModalImageEl() {
-    return document.getElementById('galleryImage') || window.modalImage || null;
-  }
-  function getModalPrevEl() {
-    return document.getElementById('modalPrev') || window.modalPrevBtn || null;
-  }
-  function getModalNextEl() {
-    return document.getElementById('modalNext') || window.modalNextBtn || null;
-  }
-  function getWideBox() {
-    return document.getElementById('wideSlideshow') || window.wideSlideshow || null;
-  }
-  function getWideContainer() {
-    return document.querySelector('.wide-scroll-container') || window.wideScrollContainer || null;
-  }
+  showSwipeGuide();
+};
 
-  // --- スワイプヒント表示関数 ---
-  function showSwipeHint(modalElement, options = {}) {
-    try {
-      if (!modalElement) {
-        console.warn('showSwipeHint: modalElement が null');
-        return;
-      }
-      const force = !!options.force;
-      if (SHOW_HINT_ONLY_ON_TOUCH && !isTouchDevice() && !force) {
-        // タッチ端末のみ表示 ⇒ デスクトップでは出さない（force なら出す）
-        return;
-      }
-
-      // localStorage に保存済みならスキップ（forceなら無視）
-      try {
-        if (!force && localStorage.getItem(SWIPE_HINT_STORAGE_KEY)) return;
-      } catch (e) {
-        // private モード等で localStorage が使えない場合は続行（表示はする）
-        console.warn('localStorage にアクセスできません:', e);
-      }
-
-      // 重複削除
-      const existing = modalElement.querySelectorAll('.swipe-hint');
-      existing.forEach(n => n.remove());
-
-      const hint = document.createElement('div');
-      hint.className = 'swipe-hint';
-      hint.textContent = 'スワイプ →'; // 軽い指示 + 右矢印
-
-      // 挿入先によって位置指定を調整する
-      const isBody = (modalElement === document.body || modalElement === document.documentElement);
-      if (isBody) {
-        // body に置く（fixedで下中央）
-        hint.style.position = 'fixed';
-        hint.style.left = '50%';
-        hint.style.bottom = '32px';
-        hint.style.transform = 'translateX(-50%) translateY(8px)';
-        modalElement.appendChild(hint);
-      } else {
-        // モーダル内部に absolute で置く（modalElement が static の場合は temporary に relative にする）
-        const cs = window.getComputedStyle(modalElement);
-        let reverted = false;
-        if (cs.position === 'static') {
-          modalElement.dataset._prevPositionForHint = 'static';
-          modalElement.style.position = 'relative';
-          reverted = true;
-        }
-        hint.style.position = 'absolute';
-        hint.style.left = '50%';
-        hint.style.bottom = '32px';
-        hint.style.transform = 'translateX(-50%) translateY(8px)';
-        modalElement.appendChild(hint);
-
-        // 後で元に戻す（ヒントが消えたタイミングで）
-        if (reverted) {
-          setTimeout(() => {
-            try {
-              if (modalElement.dataset._prevPositionForHint === 'static') {
-                modalElement.style.position = 'static';
-                delete modalElement.dataset._prevPositionForHint;
-              }
-            } catch (e) { /* ignore */ }
-          }, 2600);
-        }
-      }
-
-      // 表示トランジション
-      requestAnimationFrame(() => hint.classList.add('show'));
-
-      // 2秒後にフェードアウトして削除
-      const duration = (options.duration && Number(options.duration)) || 2000;
-      setTimeout(() => {
-        hint.classList.remove('show');
-        hint.classList.add('fade-out');
-        setTimeout(() => {
-          try { hint.remove(); } catch (e) {}
-        }, 480);
-      }, duration);
-
-      // localStorage にセット（例外は無視）
-      try {
-        localStorage.setItem(SWIPE_HINT_STORAGE_KEY, '1');
-      } catch (e) {
-        // 無視
-      }
-      // ログ（デバッグ用）
-      if (window.console) console.log('showSwipeHint: shown on', modalElement, 'force=', force);
-    } catch (err) {
-      console.warn('showSwipeHint error:', err);
-    }
-  }
-
-  // --- openModal (通常モーダル) を上書き/提供 ---
-  window.openModal = function (name, opts = {}) {
-    try {
-      const galleries = window.galleries || window.__galleries || {};
-      window.modalGallery = galleries[name] || [];
-      if (!window.modalGallery || !window.modalGallery.length) {
-        console.warn('openModal: gallery empty for', name);
-        return;
-      }
-      window.modalIndex = 0;
-      const modalEl = getModalEl();
-      const imgEl = getModalImageEl();
-
-      if (!modalEl || !imgEl) {
-        console.warn('openModal: モーダル要素が見つかりません');
-        return;
-      }
-
-      imgEl.src = window.modalGallery[window.modalIndex];
-      modalEl.style.display = 'flex';
-      const prev = getModalPrevEl(); if (prev) prev.style.display = 'block';
-      const next = getModalNextEl(); if (next) next.style.display = 'block';
-      document.body.style.overflow = 'hidden';
-      if (typeof window.pauseSlideshow === 'function') window.pauseSlideshow();
-
-      showSwipeHint(modalEl, { force: !!opts.forceHint, duration: opts.duration });
-    } catch (e) {
-      console.error('openModal error', e);
-    }
-  };
-
-  // 互換名（もし他所で openNormalModal を使っていれば）
-  window.openNormalModal = function (name, opts = {}) {
-    return window.openModal(name, opts);
-  };
-
-  // --- openWideModal (横長) を上書き/提供 ---
-  window.openWideModal = function (images, opts = {}) {
-    try {
-      const wideBox = getWideBox();
-      const wideContainer = getWideContainer();
-      if (!wideBox || !wideContainer) {
-        console.warn('openWideModal: wide elements not found');
-        return;
-      }
-      wideContainer.innerHTML = '';
-      images.forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = '';
-        img.style.display = 'inline-block';
-        img.style.userSelect = 'none';
-        wideContainer.appendChild(img);
-      });
-
-      wideBox.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      if (typeof window.pauseSlideshow === 'function') window.pauseSlideshow();
-
-      showSwipeHint(wideBox, { force: !!opts.forceHint, duration: opts.duration });
-    } catch (e) {
-      console.error('openWideModal error', e);
-    }
-  };
-
-  // --- デバッグ用: localStorage フラグをリセットする関数を公開 ---
-  window.resetSwipeHintFlag = function () {
-    try {
-      localStorage.removeItem(SWIPE_HINT_STORAGE_KEY);
-      console.log('Swipe hint flag reset');
-    } catch (e) { console.warn(e); }
-  };
-
-  // Export status
-  if (window.console) console.log('swipe-hint ready (SHOW_HINT_ONLY_ON_TOUCH=', SHOW_HINT_ONLY_ON_TOUCH, ')');
-})();
 
 
 </script>
@@ -502,7 +337,15 @@
   document.getElementById('modalNext').style.display = 'block';
 
   pauseSlideshow();
+		
+		modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  pauseSlideshow();
+
+  // ← モーダル開いた直後に表示
+  testHint();
 }
+
 
 
     function closeModal() {
@@ -807,6 +650,42 @@ wideScrollContainer.addEventListener("touchmove", e => {
   wideScrollContainer.scrollLeft = wideScrollLeft - dx;
 }, { passive: true });
 	 
+	  
+	  
+function testHint() {
+  // 既存を削除
+  document.querySelectorAll('.swipe-hint').forEach(el => el.remove());
+
+  // 新規作成
+  const hint = document.createElement('div');
+  hint.className = 'swipe-hint';
+  hint.textContent = '→ スワイプできます';
+
+  // 画面固定スタイル
+  hint.style.position = 'fixed';
+  hint.style.top = '50%';
+hint.style.left = '50%';
+hint.style.transform = 'translate(-50%, -50%)';
+  hint.style.background = 'rgba(0,0,0,0.7)';
+  hint.style.color = '#fff';
+  hint.style.padding = '6px 12px';
+  hint.style.borderRadius = '6px';
+  hint.style.zIndex = '99999';
+  hint.style.fontSize = '16px';
+  hint.style.opacity = '1';
+  hint.style.transition = 'opacity 0.5s';
+
+  document.body.appendChild(hint);
+
+  // 2秒後フェードアウトして削除
+  setTimeout(() => {
+    hint.style.opacity = '0';
+    setTimeout(() => hint.remove(), 600);
+  }, 1000);
+}
+
+
+
 
 </script>
 </body>

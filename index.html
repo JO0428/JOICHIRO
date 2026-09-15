@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>JOICHIRO ARTIST | 大野丈一郎</title>
+   <title>JOICHIRO ARTIST | 大野丈一郎</title>
 	<link rel="me" href="https://www.tamabi.ac.jp/works/70969/">
 <link rel="author" href="https://www.tamabi.ac.jp/works/70969/">
 
@@ -53,640 +52,902 @@
   }
 }
 </script>
-
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
-  <style>
-    .hover-slide {
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-    .hover-slide:hover {
-      transform: translateX(0px);
-      color: darkgray;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Font Awesome の読み込みを追加 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+<body id="top">
 
-<body>
+<header class="header-box">
+  <h1 id="site-title">JOICHIRO.art</h1>
+	<!-- 上部固定バーに -->
+<p id="site-desc"></p>
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="#top">Home</a></li>
+  <li><a href="#profile">Profile</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#footer2">Contact</a></li>
+		<!-- アイコンボタン -->
+    <li>
+      <a href="https://www.instagram.com/joichiro0428/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.youtube.com/@joichiro.art0428" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- メインギャラリー -->
- <div class="scroll-container">
-  <div class="gallery">
-    <div class="image-container slideshow-container">
-      <div class="slide-track" id="slideTrack">
-        <figure>
-          <img src="img/img-01.jpg" alt="VEGETAWARS– 大野丈一郎" data-gallery="vege">
-          <figcaption>VEGETAWARS (COMIC ART)</figcaption>
-        </figure>
-        <figure>
-          <img src="img/img-02.jpg" alt="アホン– 大野丈一郎" data-gallery="AHO">
-          <figcaption>アホン (COMEDY ART)</figcaption>
-        </figure>
-        <figure>
-          <img src="img/img-03.jpg" alt="いきもじ– 大野丈一郎" data-gallery="IK">
-          <figcaption>いきもじ (JAPANESE ART)</figcaption>
-        </figure>
-        <figure>
-          <img src="img/img-04.jpg" alt="other art 2019~2025– 大野丈一郎" data-gallery="ON">
-          <figcaption>2019~2025 (OTHER ART)</figcaption>
-        </figure>
-        <figure>
-          <img src="img/img-05.jpg" alt="日本満開– 大野丈一郎" data-gallery="jap">
-          <figcaption>日本満開 (JAPANESE ART)</figcaption>
-        </figure>
-        <figure>
-          <img src="img/img-06.jpg" alt="怪欲– 大野丈一郎" data-gallery="kai">
-          <figcaption>怪欲 (JAPANESE ART)</figcaption>
-        </figure>
-      </div>
-      <div class="slideshow-controls">
-        <button class="slideshow-button" id="prevBtn">＜</button>
-        <button class="slideshow-button" id="toggleBtn">⏸</button>
-        <button class="slideshow-button" id="nextBtn">＞</button>
+<main class="gallery">
+  <div class="work" id="profile">
+    <img src="img/img-01.png" alt="Main Work">
+    <div class="profile">
+      <img src="img/img-02.png" alt="自己紹介写真" class="profile-img">
+      <div class="profile-text">
+        <h2>大野 丈一郎</h2>
+       
+        <ul>
+			<li>アーティスト・イラストレーター</li>
+          <li>2024.3 多摩美術大学グラフィックデザイン学科を卒業</li>
+          <li>2024.4 デザイン事務所にて勤務</li>
+          <li>2025.4 作家として活動開始</li>
+        </ul>
       </div>
     </div>
   </div>
+<div id="gallery-anchor"></div>
+ <div class="tabbox" id="gallery">
+<!-- 1. MOJIJI（初期選択：checked を付与） -->
+  <input type="radio" name="tabset" id="tabcheck5" checked>
+  <label for="tabcheck5" class="tab">
+    <img src="img/samune5.png" loading="lazy" alt="MOJIJI" class="tab-img">
+    <span class="tab-title">MOJIJI</span>
+  </label>
+
+  <!-- 2. TIPO ZOO（checked を外す） -->
+  <input type="radio" name="tabset" id="tabcheck1">
+  <label for="tabcheck1" class="tab">
+    <img src="img/samune1.png" loading="lazy" alt="TIPO ZOO" class="tab-img">
+    <span class="tab-title">TIPO ZOO</span>
+  </label>
+
+  <!-- 3. AHON -->
+  <input type="radio" name="tabset" id="tabcheck2">
+  <label for="tabcheck2" class="tab">
+    <img src="img/samune2.png" loading="lazy" alt="AHON" class="tab-img">
+    <span class="tab-title">AHON</span>
+  </label>
+
+  <!-- 4. VEGETAWARS -->
+  <input type="radio" name="tabset" id="tabcheck3">
+  <label for="tabcheck3" class="tab">
+    <img src="img/samune3.png" loading="lazy" alt="VEGETAWARS" class="tab-img">
+    <span class="tab-title">VEGETAWARS</span>
+  </label>
+
+  <!-- 5. IKIMOJI -->
+  <input type="radio" name="tabset" id="tabcheck4">
+  <label for="tabcheck4" class="tab">
+    <img src="img/samune4.png" loading="lazy" alt="IKIMOJI" class="tab-img">
+    <span class="tab-title">IKIMOJI</span>
+  </label>
+	 
+<div class="tabcontent" id="tabcontent5" data-title="MOJIJI" data-desc="文字と生き物が織りなすポップアート<br>『もじじ王国』">
+  <!-- メイン画像エリア -->
+  <div class="mojiji-top-row">
+    <div class="mojiji-item wide">
+      <video 
+        src="img/mojiji-main.MOV" 
+        loop 
+        muted 
+        playsinline 
+        poster="img/mo1.png"
+        class="mojiji-main-video"
+        id="mojiji-main-video">
+        お使いのブラウザは動画タグに対応していません。
+      </video>
+    </div>
+  </div>
+
+  <!-- 117枚の画像を横9列に並べるエリア -->
+  <div class="mojiji-grid-wrapper">
+    <div class="mojiji-grid" id="mojiji-grid"></div>
+  </div>
+
+  <!-- 一番下に追加する画像エリア -->
+  <div class="mojiji-bottom-row">
+    <div class="mojiji-item">
+      <img src="img/tmojimoji.png" alt="tmojimoji" class="mojiji-footer-img" loading="lazy">
+    </div>
+  </div>
 </div>
-
-
-  <!-- フッター -->
-  <footer>
-    <div class="footer-column">
-   <div class="name" id="joyArtTrigger">
-  <span class="jo">JOICHIRO</span>
-  <span class="art"></span>
-</div>
- <p class="author-name">大野丈一郎　Official Website</p>
-
-  <div class="middle-text">
-  <p id="comicArt">COMIC ART</p>
-  <div id="comicArtDisplay" class="display-text"></div>
-
-  <p id="comedyArt">COMEDY ART</p>
-  <div id="comedyArtDisplay" class="display-text"></div>
-
-  <p id="japaneseArt">JAPANESE ART</p>
-  <div id="japaneseArtDisplay" class="display-text"></div>
 	
-	    <p id="otherART">OTHER ART</p>
-  <div id="other" class="display-text"></div>
-</div>
-      <div class="contacts">
-     <a href="https://www.instagram.com/joichiro0428/">Instagram</a>
-	 <a href="mailto:going0053wer@gmail.com">Mail</a>
+  <!-- タブコンテンツはそのまま -->
+    <div class="tabcontent" id="tabcontent1" data-title="TIPO ZOO" data-desc="日本の文字文化を世界に<br>文字と絵が溶け合う「現代の象形文字」">
+      <div class="zoo-top-row">
+        <div class="zoo-item wide"><img src="img/77.png" loading="lazy" alt="ZOO Wall"></div>
+      </div>
+
+      <div class="slideshow-wrap js-slideshow">
+        <div class="slide-thumbs left">
+          <button class="thumb active" data-index="0"><img src="img/moji1.png" loading="lazy"></button>
+          <button class="thumb" data-index="1"><img src="img/moji2.png" loading="lazy"></button>
+          <button class="thumb" data-index="2"><img src="img/moji3.png" loading="lazy"></button>
+          <button class="thumb" data-index="3"><img src="img/moji4.png" loading="lazy"></button>
+          <button class="thumb" data-index="4"><img src="img/moji5.png" loading="lazy"></button>
+          <button class="thumb" data-index="5"><img src="img/moji6.png" loading="lazy"></button>
+          <button class="thumb" data-index="6"><img src="img/moji7.png" loading="lazy"></button>
+          <button class="thumb" data-index="7"><img src="img/moji8.png" loading="lazy"></button>
+          <button class="thumb" data-index="8"><img src="img/moji9.png" loading="lazy"></button>
+          <button class="thumb" data-index="9"><img src="img/moji10.png" loading="lazy"></button>
+          <button class="thumb" data-index="10"><img src="img/moji11.png" loading="lazy"></button>
+          <button class="thumb" data-index="11"><img src="img/moji12.png" loading="lazy"></button>
+          <button class="thumb" data-index="12"><img src="img/moji13.png" loading="lazy"></button>
+          <button class="thumb" data-index="13"><img src="img/moji14.png" loading="lazy"></button>
+          <button class="thumb" data-index="14"><img src="img/moji15.png" loading="lazy"></button>
+          <button class="thumb" data-index="15"><img src="img/moji16.png" loading="lazy"></button>
+          <button class="thumb" data-index="16"><img src="img/moji17.png" loading="lazy"></button>
+          <button class="thumb" data-index="17"><img src="img/moji18.png" loading="lazy"></button>
+          <button class="thumb" data-index="18"><img src="img/moji19.png" loading="lazy"></button>
+          <button class="thumb" data-index="19"><img src="img/moji20.png" loading="lazy"></button>
+          <button class="thumb" data-index="20"><img src="img/moji21.png" loading="lazy"></button>
+          <button class="thumb" data-index="21"><img src="img/moji22.png" loading="lazy"></button>
+          <button class="thumb" data-index="22"><img src="img/moji23.png" loading="lazy"></button>
+          <button class="thumb" data-index="23"><img src="img/moji24.png" loading="lazy"></button>
+        </div>
+        <div class="slideshow">
+			<button class="nav prev" aria-label="前へ">◀</button>
+  <button class="nav next" aria-label="次へ">▶</button>
+          <div class="slide-track">
+            <img src="img/moji1.png" loading="lazy" class="slide active">
+            <img src="img/moji2.png" loading="lazy" class="slide"><img src="img/moji3.png" loading="lazy" class="slide">
+            <img src="img/moji4.png" loading="lazy" class="slide"><img src="img/moji5.png" loading="lazy" class="slide">
+            <img src="img/moji6.png" loading="lazy" class="slide"><img src="img/moji7.png" loading="lazy" class="slide">
+            <img src="img/moji8.png" loading="lazy" class="slide"><img src="img/moji9.png" loading="lazy" class="slide">
+            <img src="img/moji10.png" loading="lazy" class="slide"><img src="img/moji11.png" loading="lazy" class="slide">
+            <img src="img/moji12.png" loading="lazy" class="slide"><img src="img/moji13.png" loading="lazy" class="slide">
+            <img src="img/moji14.png" loading="lazy" class="slide"><img src="img/moji15.png" loading="lazy" class="slide">
+            <img src="img/moji16.png" loading="lazy" class="slide"><img src="img/moji17.png" loading="lazy" class="slide">
+            <img src="img/moji18.png" loading="lazy" class="slide"><img src="img/moji19.png" loading="lazy" class="slide">
+            <img src="img/moji20.png" loading="lazy" class="slide"><img src="img/moji21.png" loading="lazy" class="slide">
+            <img src="img/moji22.png" loading="lazy" class="slide"><img src="img/moji23.png" loading="lazy" class="slide">
+            <img src="img/moji24.png" loading="lazy" class="slide"><img src="img/moji25.png" loading="lazy" class="slide">
+            <img src="img/moji26.png" loading="lazy" class="slide"><img src="img/moji27.png" loading="lazy" class="slide">
+            <img src="img/moji28.png" loading="lazy" class="slide"><img src="img/moji29.png" loading="lazy" class="slide">
+            <img src="img/moji30.png" loading="lazy" class="slide"><img src="img/moji31.png" loading="lazy" class="slide">
+            <img src="img/moji32.png" loading="lazy" class="slide"><img src="img/moji33.png" loading="lazy" class="slide">
+            <img src="img/moji34.png" loading="lazy" class="slide"><img src="img/moji35.png" loading="lazy" class="slide">
+            <img src="img/moji36.png" loading="lazy" class="slide"><img src="img/moji37.png" loading="lazy" class="slide">
+            <img src="img/moji38.png" loading="lazy" class="slide"><img src="img/moji39.png" loading="lazy" class="slide">
+            <img src="img/moji40.png" loading="lazy" class="slide"><img src="img/moji41.png" loading="lazy" class="slide">
+            <img src="img/moji42.png" loading="lazy" class="slide"><img src="img/moji43.png" loading="lazy" class="slide">
+            <img src="img/moji44.png" loading="lazy" class="slide"><img src="img/moji45.png" loading="lazy" class="slide">
+            <img src="img/moji46.png" loading="lazy" class="slide"><img src="img/moji47.png" loading="lazy" class="slide">
+            <img src="img/moji48.png" loading="lazy" class="slide">
+          </div>
+			
+        </div>
+        <div class="slide-thumbs right">
+          <button class="thumb" data-index="24"><img src="img/moji25.png" loading="lazy"></button>
+          <button class="thumb" data-index="25"><img src="img/moji26.png" loading="lazy"></button>
+          <button class="thumb" data-index="26"><img src="img/moji27.png" loading="lazy"></button>
+          <button class="thumb" data-index="27"><img src="img/moji28.png" loading="lazy"></button>
+          <button class="thumb" data-index="28"><img src="img/moji29.png" loading="lazy"></button>
+          <button class="thumb" data-index="29"><img src="img/moji30.png" loading="lazy"></button>
+          <button class="thumb" data-index="30"><img src="img/moji31.png" loading="lazy"></button>
+          <button class="thumb" data-index="31"><img src="img/moji32.png" loading="lazy"></button>
+          <button class="thumb" data-index="32"><img src="img/moji33.png" loading="lazy"></button>
+          <button class="thumb" data-index="33"><img src="img/moji34.png" loading="lazy"></button>
+          <button class="thumb" data-index="34"><img src="img/moji35.png" loading="lazy"></button>
+          <button class="thumb" data-index="35"><img src="img/moji36.png" loading="lazy"></button>
+          <button class="thumb" data-index="36"><img src="img/moji37.png" loading="lazy"></button>
+          <button class="thumb" data-index="37"><img src="img/moji38.png" loading="lazy"></button>
+          <button class="thumb" data-index="38"><img src="img/moji39.png" loading="lazy"></button>
+          <button class="thumb" data-index="39"><img src="img/moji40.png" loading="lazy"></button>
+          <button class="thumb" data-index="40"><img src="img/moji41.png" loading="lazy"></button>
+          <button class="thumb" data-index="41"><img src="img/moji42.png" loading="lazy"></button>
+          <button class="thumb" data-index="42"><img src="img/moji43.png" loading="lazy"></button>
+          <button class="thumb" data-index="43"><img src="img/moji44.png" loading="lazy"></button>
+          <button class="thumb" data-index="44"><img src="img/moji45.png" loading="lazy"></button>
+          <button class="thumb" data-index="45"><img src="img/moji46.png" loading="lazy"></button>
+          <button class="thumb" data-index="46"><img src="img/moji47.png" loading="lazy"></button>
+          <button class="thumb" data-index="47"><img src="img/moji48.png" loading="lazy"></button>
+        </div>
+      </div>
+
+
+        <div class="zoo-flex-row">
+          <div class="zoo-item poster"><img src="img/ani3.png" loading="lazy" alt="poster"></div>
+          <div class="zoo-item real"><img src="img/ani4.png" loading="lazy" alt="real"></div>
+        </div>
+        <div class="zoo-flex2-row">
+          <div class="zoo-item shirt"><img src="img/ani5.png" loading="lazy" alt="shirt"></div>
+          <div class="zoo-item figure"><img src="img/ani6.png" loading="lazy" alt="figure"></div>
+        </div>
+ 
+		</div>
+
+    <div class="tabcontent" id="tabcontent2" data-title="AHON" data-desc="意味を求めすぎる現代社会へ<br>私の発想があなたをアホにする">
+		  <div class="aho-top-row">
+        <div class="aho-item wide"><img src="img/ahobook1.png" loading="lazy" alt="AHO Wall"></div>
+        <div class="aho-item square"><img src="img/ahobook2.png" loading="lazy" alt="AHO Character Tiles"></div>
+      </div>
+      <div class="slideshow-wrap js-slideshow">
+        <div class="slide-thumbs2 left">
+          <button class="thumb active" data-index="0"><img src="img/ahobox1.png" loading="lazy"></button>
+          <button class="thumb" data-index="1"><img src="img/ahobox2.png" loading="lazy"></button>
+          <button class="thumb" data-index="2"><img src="img/ahobox3.png" loading="lazy"></button>
+          <button class="thumb" data-index="3"><img src="img/ahobox4.png" loading="lazy"></button>
+          <button class="thumb" data-index="4"><img src="img/ahobox5.png" loading="lazy"></button>
+          <button class="thumb" data-index="5"><img src="img/ahobox6.png" loading="lazy"></button>
+          <button class="thumb" data-index="6"><img src="img/ahobox7.png" loading="lazy"></button>
+          <button class="thumb" data-index="7"><img src="img/ahobox8.png" loading="lazy"></button>
+          <button class="thumb" data-index="8"><img src="img/ahobox9.png" loading="lazy"></button>
+          <button class="thumb" data-index="9"><img src="img/ahobox10.png" loading="lazy"></button>
+          <button class="thumb" data-index="10"><img src="img/ahobox11.png" loading="lazy"></button>
+          <button class="thumb" data-index="11"><img src="img/ahobox12.png" loading="lazy"></button>
+          <button class="thumb" data-index="12"><img src="img/ahobox13.png" loading="lazy"></button>
+          <button class="thumb" data-index="13"><img src="img/ahobox14.png" loading="lazy"></button>
+          <button class="thumb" data-index="14"><img src="img/ahobox15.png" loading="lazy"></button>
+          <button class="thumb" data-index="15"><img src="img/ahobox16.png" loading="lazy"></button>
+          <button class="thumb" data-index="16"><img src="img/ahobox17.png" loading="lazy"></button>
+          <button class="thumb" data-index="17"><img src="img/ahobox18.png" loading="lazy"></button>
+          <button class="thumb" data-index="18"><img src="img/ahobox19.png" loading="lazy"></button>
+          <button class="thumb" data-index="19"><img src="img/ahobox20.png" loading="lazy"></button>
+          <button class="thumb" data-index="20"><img src="img/ahobox21.png" loading="lazy"></button>
+          <button class="thumb" data-index="21"><img src="img/ahobox22.png" loading="lazy"></button>
+          <button class="thumb" data-index="22"><img src="img/ahobox23.png" loading="lazy"></button>
+          <button class="thumb" data-index="23"><img src="img/ahobox24.png" loading="lazy"></button>
+          <button class="thumb" data-index="24"><img src="img/ahobox25.png" loading="lazy"></button>
+          <button class="thumb" data-index="25"><img src="img/ahobox26.png" loading="lazy"></button>
+          <button class="thumb" data-index="26"><img src="img/ahobox27.png" loading="lazy"></button>
+          <button class="thumb" data-index="27"><img src="img/ahobox28.png" loading="lazy"></button>
+          <button class="thumb" data-index="28"><img src="img/ahobox29.png" loading="lazy"></button>
+          <button class="thumb" data-index="29"><img src="img/ahobox30.png" loading="lazy"></button>
+          <button class="thumb" data-index="30"><img src="img/ahobox31.png" loading="lazy"></button>
+          <button class="thumb" data-index="31"><img src="img/ahobox32.png" loading="lazy"></button>
+          <button class="thumb" data-index="32"><img src="img/ahobox33.png" loading="lazy"></button>
+          <button class="thumb" data-index="33"><img src="img/ahobox34.png" loading="lazy"></button>
+          <button class="thumb" data-index="34"><img src="img/ahobox35.png" loading="lazy"></button>
+          <button class="thumb" data-index="35"><img src="img/ahobox36.png" loading="lazy"></button>
+          <button class="thumb" data-index="36"><img src="img/ahobox37.png" loading="lazy"></button>
+          <button class="thumb" data-index="37"><img src="img/ahobox38.png" loading="lazy"></button>
+          <button class="thumb" data-index="38"><img src="img/ahobox39.png" loading="lazy"></button>
+          <button class="thumb" data-index="39"><img src="img/ahobox40.png" loading="lazy"></button>
+        </div>
+
+        <div class="slideshow">
+			<button class="nav prev" aria-label="前へ">◀</button>
+  <button class="nav next" aria-label="次へ">▶</button>
+          <div class="slide-track">
+            <img src="img/aho1.png" loading="lazy" class="slide active">
+            <img src="img/aho2.png" loading="lazy" class="slide"><img src="img/aho3.png" loading="lazy" class="slide">
+            <img src="img/aho4.png" loading="lazy" class="slide"><img src="img/aho5.png" loading="lazy" class="slide">
+            <img src="img/aho6.png" loading="lazy" class="slide"><img src="img/aho7.png" loading="lazy" class="slide">
+            <img src="img/aho8.png" loading="lazy" class="slide"><img src="img/aho9.png" loading="lazy" class="slide">
+            <img src="img/aho10.png" loading="lazy" class="slide"><img src="img/aho11.png" loading="lazy" class="slide">
+            <img src="img/aho12.png" loading="lazy" class="slide"><img src="img/aho13.png" loading="lazy" class="slide">
+            <img src="img/aho14.png" loading="lazy" class="slide"><img src="img/aho15.png" loading="lazy" class="slide">
+            <img src="img/aho16.png" loading="lazy" class="slide"><img src="img/aho17.png" loading="lazy" class="slide">
+            <img src="img/aho18.png" loading="lazy" class="slide"><img src="img/aho19.png" loading="lazy" class="slide">
+            <img src="img/aho20.png" loading="lazy" class="slide"><img src="img/aho21.png" loading="lazy" class="slide">
+            <img src="img/aho22.png" loading="lazy" class="slide"><img src="img/aho23.png" loading="lazy" class="slide">
+            <img src="img/aho24.png" loading="lazy" class="slide"><img src="img/aho25.png" loading="lazy" class="slide">
+            <img src="img/aho26.png" loading="lazy" class="slide"><img src="img/aho27.png" loading="lazy" class="slide">
+            <img src="img/aho28.png" loading="lazy" class="slide"><img src="img/aho29.png" loading="lazy" class="slide">
+            <img src="img/aho30.png" loading="lazy" class="slide"><img src="img/aho31.png" loading="lazy" class="slide">
+            <img src="img/aho32.png" loading="lazy" class="slide"><img src="img/aho33.png" loading="lazy" class="slide">
+            <img src="img/aho34.png" loading="lazy" class="slide"><img src="img/aho35.png" loading="lazy" class="slide">
+            <img src="img/aho36.png" loading="lazy" class="slide"><img src="img/aho37.png" loading="lazy" class="slide">
+            <img src="img/aho38.png" loading="lazy" class="slide"><img src="img/aho39.png" loading="lazy" class="slide">
+            <img src="img/aho40.png" loading="lazy" class="slide"><img src="img/aho41.png" loading="lazy" class="slide">
+            <img src="img/aho42.png" loading="lazy" class="slide"><img src="img/aho43.png" loading="lazy" class="slide">
+            <img src="img/aho44.png" loading="lazy" class="slide"><img src="img/aho45.png" loading="lazy" class="slide">
+            <img src="img/aho46.png" loading="lazy" class="slide"><img src="img/aho47.png" loading="lazy" class="slide">
+            <img src="img/aho48.png" loading="lazy" class="slide"><img src="img/aho49.png" loading="lazy" class="slide">
+            <img src="img/aho50.png" loading="lazy" class="slide"><img src="img/aho51.png" loading="lazy" class="slide">
+            <img src="img/aho52.png" loading="lazy" class="slide"><img src="img/aho53.png" loading="lazy" class="slide">
+            <img src="img/aho54.png" loading="lazy" class="slide"><img src="img/aho55.png" loading="lazy" class="slide">
+            <img src="img/aho56.png" loading="lazy" class="slide"><img src="img/aho57.png" loading="lazy" class="slide">
+            <img src="img/aho58.png" loading="lazy" class="slide"><img src="img/aho59.png" loading="lazy" class="slide">
+            <img src="img/aho60.png" loading="lazy" class="slide"><img src="img/aho61.png" loading="lazy" class="slide">
+            <img src="img/aho62.png" loading="lazy" class="slide"><img src="img/aho63.png" loading="lazy" class="slide">
+            <img src="img/aho64.png" loading="lazy" class="slide"><img src="img/aho65.png" loading="lazy" class="slide">
+            <img src="img/aho66.png" loading="lazy" class="slide"><img src="img/aho67.png" loading="lazy" class="slide">
+            <img src="img/aho68.png" loading="lazy" class="slide"><img src="img/aho69.png" loading="lazy" class="slide">
+            <img src="img/aho70.png" loading="lazy" class="slide"><img src="img/aho71.png" loading="lazy" class="slide">
+            <img src="img/aho72.png" loading="lazy" class="slide"><img src="img/aho73.png" loading="lazy" class="slide">
+            <img src="img/aho74.png" loading="lazy" class="slide"><img src="img/aho75.png" loading="lazy" class="slide">
+            <img src="img/aho76.png" loading="lazy" class="slide"><img src="img/aho77.png" loading="lazy" class="slide">
+            <img src="img/aho78.png" loading="lazy" class="slide"><img src="img/aho79.png" loading="lazy" class="slide">
+            <img src="img/aho80.png" loading="lazy" class="slide">
+          </div>
+			
+        </div>
+
+        <div class="slide-thumbs2 right">
+          <button class="thumb" data-index="40"><img src="img/ahobox41.png" loading="lazy"></button>
+          <button class="thumb" data-index="41"><img src="img/ahobox42.png" loading="lazy"></button>
+          <button class="thumb" data-index="42"><img src="img/ahobox43.png" loading="lazy"></button>
+          <button class="thumb" data-index="43"><img src="img/ahobox44.png" loading="lazy"></button>
+          <button class="thumb" data-index="44"><img src="img/ahobox45.png" loading="lazy"></button>
+          <button class="thumb" data-index="45"><img src="img/ahobox46.png" loading="lazy"></button>
+          <button class="thumb" data-index="46"><img src="img/ahobox47.png" loading="lazy"></button>
+          <button class="thumb" data-index="47"><img src="img/ahobox48.png" loading="lazy"></button>
+          <button class="thumb" data-index="48"><img src="img/ahobox49.png" loading="lazy"></button>
+          <button class="thumb" data-index="49"><img src="img/ahobox50.png" loading="lazy"></button>
+          <button class="thumb" data-index="50"><img src="img/ahobox51.png" loading="lazy"></button>
+          <button class="thumb" data-index="51"><img src="img/ahobox52.png" loading="lazy"></button>
+          <button class="thumb" data-index="52"><img src="img/ahobox53.png" loading="lazy"></button>
+          <button class="thumb" data-index="53"><img src="img/ahobox54.png" loading="lazy"></button>
+          <button class="thumb" data-index="54"><img src="img/ahobox55.png" loading="lazy"></button>
+          <button class="thumb" data-index="55"><img src="img/ahobox56.png" loading="lazy"></button>
+          <button class="thumb" data-index="56"><img src="img/ahobox57.png" loading="lazy"></button>
+          <button class="thumb" data-index="57"><img src="img/ahobox58.png" loading="lazy"></button>
+          <button class="thumb" data-index="58"><img src="img/ahobox59.png" loading="lazy"></button>
+          <button class="thumb" data-index="59"><img src="img/ahobox60.png" loading="lazy"></button>
+          <button class="thumb" data-index="60"><img src="img/ahobox61.png" loading="lazy"></button>
+          <button class="thumb" data-index="61"><img src="img/ahobox62.png" loading="lazy"></button>
+          <button class="thumb" data-index="62"><img src="img/ahobox63.png" loading="lazy"></button>
+          <button class="thumb" data-index="63"><img src="img/ahobox64.png" loading="lazy"></button>
+          <button class="thumb" data-index="64"><img src="img/ahobox65.png" loading="lazy"></button>
+          <button class="thumb" data-index="65"><img src="img/ahobox66.png" loading="lazy"></button>
+          <button class="thumb" data-index="66"><img src="img/ahobox67.png" loading="lazy"></button>
+          <button class="thumb" data-index="67"><img src="img/ahobox68.png" loading="lazy"></button>
+          <button class="thumb" data-index="68"><img src="img/ahobox69.png" loading="lazy"></button>
+          <button class="thumb" data-index="69"><img src="img/ahobox70.png" loading="lazy"></button>
+          <button class="thumb" data-index="70"><img src="img/ahobox71.png" loading="lazy"></button>
+          <button class="thumb" data-index="71"><img src="img/ahobox72.png" loading="lazy"></button>
+          <button class="thumb" data-index="72"><img src="img/ahobox73.png" loading="lazy"></button>
+          <button class="thumb" data-index="73"><img src="img/ahobox74.png" loading="lazy"></button>
+          <button class="thumb" data-index="74"><img src="img/ahobox75.png" loading="lazy"></button>
+          <button class="thumb" data-index="75"><img src="img/ahobox76.png" loading="lazy"></button>
+          <button class="thumb" data-index="76"><img src="img/ahobox77.png" loading="lazy"></button>
+          <button class="thumb" data-index="77"><img src="img/ahobox78.png" loading="lazy"></button>
+          <button class="thumb" data-index="78"><img src="img/ahobox79.png" loading="lazy"></button>
+          <button class="thumb" data-index="79"><img src="img/ahobox80.png" loading="lazy"></button>
+        </div>
+      </div>
+			  <div class="aho-bottom-row">
+        <div class="aho-item figi1"><img src="img/ahofigi1.png" loading="lazy" alt="AHO FIGI"></div>
+        <div class="aho-item figi2"><img src="img/ahofigi2.png" loading="lazy" alt="AHO Character FIGI"></div>
       </div>
     </div>
-	  
+
+    <div class="tabcontent" id="tabcontent3" data-title="VEGETAWARS" data-desc="野菜嫌いへの挑戦状<br>私の個性が嫌いという壁をブチ破る">
+			  <div class="vege-top-row">
+        <div class="vege-item wide"><img src="img/vegeF1.png" loading="lazy" alt="VEGE Wall"></div>
+        <div class="vege-item square"><img src="img/vegeF2.png" loading="lazy" alt="VEGE Character Tiles"></div>
+      </div>
+      <div class="slideshow js-slideshow">
+        <button class="nav prev" aria-label="前の画像">◀</button>
+        <button class="nav next" aria-label="次の画像">▶</button>
+        <div class="slide-track">
+          <img src="img/vege1.jpg" class="slide active">
+          <img src="img/vege2.jpg" class="slide">
+          <img src="img/vege4.jpg" class="slide">
+          <img src="img/vege5.jpg" class="slide">
+          <img src="img/vege6.jpg" class="slide">
+          <img src="img/vege7.jpg" class="slide">
+          <img src="img/vege8.jpg" class="slide">
+          <img src="img/vege9.jpg" class="slide">
+          <img src="img/vege10.jpg" class="slide">
+          <img src="img/vege11.jpg" class="slide">
+          <img src="img/vege12.jpg" class="slide">
+          <img src="img/vege13.jpg" class="slide">
+          <img src="img/vege14.jpg" class="slide">
+          <img src="img/vege15.jpg" class="slide">
+          <img src="img/vege16.jpg" class="slide">
+          <img src="img/vege17.jpg" class="slide">
+          <img src="img/vege18.jpg" class="slide">
+          <img src="img/vege19.jpg" class="slide">
+          <img src="img/vege20.jpg" class="slide">
+          <img src="img/vege21.jpg" class="slide">
+        </div>
+      </div>
+		 <div class="vege-bottom-row">
+        <div class="vege-item figure"><img src="img/vegeF3.png" loading="lazy" alt="VEGE Wall"></div>
+        <div class="vege-item cg"><img src="img/vegeF4.png" loading="lazy" alt="VEGE Character Tiles"></div>
+      </div>
+    </div>
+
+    <div class="tabcontent" id="tabcontent4" data-title="IKIMOJI" data-desc="文字が肉を持ち、形が語りだす<br>文字と視覚が混ざり合う「人間本来の風景」">
+
+  <!-- 上段 -->
+  <div class="ikimoji-top-row">
+    <div class="ikimoji-item full">
+      <img src="img/ikimoji01.png" loading="lazy" alt="IKIMOJI Top">
+    </div>
+  </div>
+
+  <!-- 中段（横長スライド） -->
+<div class="ikimoji-slide-row">
+  <div class="ikimoji-scroll js-ikimoji-scroll">
+   <img src="img/ikimoji02.jpg" alt="IKIMOJI Panorama">
+    <img src="img/ikimoji02.jpg" alt="IKIMOJI Panorama">
+	   <img src="img/ikimoji02.jpg" alt="IKIMOJI Panorama">
+	   <img src="img/ikimoji02.jpg" alt="IKIMOJI Panorama">
+  </div>
+</div>
+
+  <!-- 下段 -->
+  <div class="ikimoji-bottom-row">
+    <div class="ikimoji-item half">
+      <img src="img/ikimoji3.png" alt="IKIMOJI 3">
+    </div>
+    <div class="ikimoji-item half2">
+      <img src="img/ikimoji4.png" alt="IKIMOJI 4">
+    </div>
+  </div>
+
+</div>
+	<div class="tab-duplicate">
+	  <label for="tabcheck5" class="tab">
+    <img src="img/samune5.png" loading="lazy" alt="COMIC" class="tab-img">
+    <span class="tab-title">MOJIJI</span>
+  </label>
+  <label for="tabcheck1" class="tab">
+    <img src="img/samune1.png" loading="lazy" alt="ZOO" class="tab-img">
+    <span class="tab-title">ANIMOJI</span>
+  </label>
+
+  <label for="tabcheck2" class="tab">
+    <img src="img/samune2.png" loading="lazy" alt="AHO" class="tab-img">
+    <span class="tab-title">AHO</span>
+  </label>
+
+  <label for="tabcheck3" class="tab">
+    <img src="img/samune3.png" loading="lazy" alt="VEGETAWARS" class="tab-img">
+    <span class="tab-title">VEGETAWARS</span>
+  </label>
+
+  <label for="tabcheck4" class="tab">
+    <img src="img/samune4.png" loading="lazy" alt="COMIC" class="tab-img">
+    <span class="tab-title">IKIMOJI</span>
+  </label>
+		
+
+</div>
+  </div>
+</main>
+	
+<!-- Contact Poetic Lead -->
+<section class="contact-lead-poetic">
+  <div class="contact-lead-inner">
+    <p class="lead-line emphasis">人は整列したものに安心し、歪（いびつ）なものに心を奪われる</p>
+    <p class="lead-line space">一歩はみ出す<span style="font-family: inherit;">『違和感』</span>こそが、</p>
+    <p class="lead-line">正解で溢れる、現代のクリエイティブに必要不可欠です</p>
+    <p class="lead-line signature">日常を<span style="font-family: inherit;">独自のユーモア</span>で刺激的なアートへと変異させるJOICHIRO</p>
+    <p class="lead-line signature2">その感性が、あなたに<span style="font-family: inherit;">未知のエネルギー</span>をもたらします</p>
+  </div>
+</section>
+	
+ <footer id="footer2" data-title="CONTACT" data-desc=" / お問い合わせ">
+    <div class="contact-container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="email-box">
+            <p class="label">Email</p>
+            <a href="mailto:joichiro.art@gmail.com" class="email-link">joichiro.art@gmail.com</a>
+          </div>
+
+          <div class="notes-box">
+            <h3>ご依頼にあたっての確認事項</h3>
+            <ul>
+              <li><strong>返信：</strong> 原則として3営業日以内に返信いたします。</li>
+              <li><strong>稼働状況：</strong> 現在、2026年3月以降に着手する案件をお受けしております。</li>
+              <li><strong>契約：</strong> 法人様とのNDA（秘密保持契約）の締結も可能です。</li>
+              <li><strong>キャンセル：</strong> 着手後のキャンセルは、進行状況に応じた費用を申し受けます。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="contact-template">
+          <h3>お見積り・ご依頼用テンプレート</h3>
+          <p class="template-desc">以下の項目をコピーして詳細を添えていただけますと、スムーズです。</p>
+          <div class="copy-area">
+            <pre id="template-text">
+【ご依頼詳細テンプレート】
+お名前 / 貴社名：
+ご依頼の概要：
+使用媒体 / 目的：
+ご予算（目安）：
+納期 / 希望公開日：
+制作のターゲット：
+サイズ・納品形式：
+希望する雰囲気・参考資料：
+実績公開の可否：
+その他備考：</pre>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; JOICHIRO.art All Rights Reserved.
+      </div>
+    </div>
   </footer>
-
-  <!-- ローダー -->
-  <div id="loader">
-    <div class="loader-content">
-      <img src="img/loading.gif" alt="Loading..." />
-      <p>Loading...</p>
-    </div>
-  </div>
-
-  <!-- 通常モーダル -->
-  <div id="galleryModal">
-    <div id="galleryModalContent">
-      <button id="modalPrev" class="modal-nav-button" aria-label="前の画像">‹</button>
-      <img id="galleryImage" src="" alt="ギャラリー画像" />
-      <button id="modalNext" class="modal-nav-button" aria-label="次の画像">›</button>
-      <button id="modalClose" style="position:absolute; top:10px; right:10px;">×</button>
-    </div>
-  </div>
-
-  <!-- 横長モーダル（IK用） -->
-  <div class="wide-slideshow" id="wideSlideshow">
-    <button class="wide-prev">‹</button>
-    <div class="wide-scroll-container"></div>
-    <button class="wide-next">›</button>
-    <button class="close-btn">×</button>
-  </div>
-	<!-- スワイプガイド -->
-
-	
 <script>
-  // すべてのテキスト要素に hover-slide を追加（読み込み時）
-  window.addEventListener('DOMContentLoaded', () => {
-    const targets = document.querySelectorAll('p, a, span, div.name');
-    targets.forEach(el => {
-      if (el.textContent.trim().length > 0) {
-        el.classList.add('hover-slide');
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================
+     1. IntersectionObserver 共通
+  ========================= */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+
+      // スライドショー自動再生
+      if (entry.target.classList.contains("js-slideshow")) {
+        if (entry.isIntersecting) entry.target._startAuto?.();
+        else entry.target._stopAuto?.();
       }
+
+      // IKIMOJI 横スクロール
+      if (entry.target.classList.contains("js-ikimoji-scroll")) {
+        entry.target.classList.toggle("is-moving", entry.isIntersecting);
+      }
+
+    });
+  }, { threshold: 0.1 });
+
+
+  /* =========================
+     2. スライドショー制御
+  ========================= */
+  document.querySelectorAll(".js-slideshow").forEach(slideshow => {
+
+    const slides = Array.from(slideshow.querySelectorAll(".slide"));
+    const thumbs = Array.from(slideshow.querySelectorAll(".thumb"));
+    const prevBtn = slideshow.querySelector(".prev");
+    const nextBtn = slideshow.querySelector(".next");
+
+    let current = 0;
+    const intervalTime = 2000;
+    let auto = null;
+
+    function update(index) {
+      slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+      thumbs.forEach((thumb, i) => thumb.classList.toggle("active", i === index));
+      current = index;
+    }
+
+    const next = () => update((current + 1) % slides.length);
+    const prev = () => update((current - 1 + slides.length) % slides.length);
+
+    const start = () => { if (!auto && slides.length > 1) auto = setInterval(next, intervalTime); };
+    const stop = () => { clearInterval(auto); auto = null; };
+
+    if (nextBtn) nextBtn.addEventListener("click", e => { e.preventDefault(); next(); stop(); start(); });
+    if (prevBtn) prevBtn.addEventListener("click", e => { e.preventDefault(); prev(); stop(); start(); });
+
+    thumbs.forEach(thumb => {
+      thumb.addEventListener("click", () => {
+        const index = parseInt(thumb.dataset.index);
+        if (!isNaN(index)) { update(index); stop(); start(); }
+      });
+    });
+
+    update(0);
+    observer.observe(slideshow);
+
+    slideshow._startAuto = start;
+    slideshow._stopAuto = stop;
+
+  });
+
+
+  /* =========================
+     3. IKIMOJI パノラマ
+  ========================= */
+  const ikimojiScroll = document.querySelector(".js-ikimoji-scroll");
+  if (ikimojiScroll) observer.observe(ikimojiScroll);
+
+
+  /* =========================
+     4. タブ切替時の自動再生リセット
+  ========================= */
+  document.querySelectorAll('input[name="tabset"]').forEach(tab => {
+    tab.addEventListener("change", () => {
+      document.querySelectorAll(".js-slideshow").forEach(slideshow => {
+        slideshow._stopAuto?.();
+        slideshow._startAuto?.();
+      });
     });
   });
-	
-	
-	function showSwipeGuide() {
-  const guide = document.getElementById("swipeGuide");
-  if (!guide) return;
 
-  guide.classList.add("show");
 
-  // 2秒後にフェードアウト
-  setTimeout(() => {
-    guide.classList.remove("show");
-  }, 2000);
-}
+  /* =========================
+     5. ナビゲーションスクロール制御 ＆ タイトル更新連動
+  ========================= */
+  document.querySelectorAll(".nav-menu a").forEach(link => {
+    link.addEventListener("click", e => {
+      const href = link.getAttribute("href");
 
-// 通常モーダル
-const originalOpenModal = window.openModal;
-window.openModal = function(name) {
-  if (typeof originalOpenModal === "function") {
-    originalOpenModal(name);
+      // 外部リンク（SNS等）はそのまま遷移
+      if (!href || !href.startsWith("#")) {
+        return; 
+      }
+
+      e.preventDefault();
+
+      const triggerHeaderUpdate = () => {
+        // スクロール完了後にタイトルの表示更新を呼び出す
+        if (typeof window.triggerUpdateHeader === "function") {
+          setTimeout(window.triggerUpdateHeader, 300);
+          setTimeout(window.triggerUpdateHeader, 600);
+        }
+      };
+
+      // HOME
+      if (href === "#top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        triggerHeaderUpdate();
+        return;
+      }
+
+      // PROFILE 中央表示
+      if (href === "#profile") {
+        const profile = document.querySelector("#profile");
+        if (profile) {
+          const rect = profile.getBoundingClientRect();
+          const center = rect.top + window.scrollY - (window.innerHeight / 5) + (profile.offsetHeight / 2);
+          window.scrollTo({ top: center, behavior: "smooth" });
+          triggerHeaderUpdate();
+        }
+        return;
+      }
+
+      // GALLERY
+      if (href === "#gallery") {
+        const gallery = document.querySelector("#gallery");
+        if (gallery) {
+          const headerBox = document.querySelector(".header-box");
+          const headerHeight = headerBox ? headerBox.offsetHeight : 0;
+          const rect = gallery.getBoundingClientRect();
+          window.scrollTo({ top: rect.top + window.scrollY - headerHeight, behavior: "smooth" });
+          triggerHeaderUpdate();
+        }
+        return;
+      }
+
+      // FOOTER
+      if (href === "#footer2") {
+        const footer = document.querySelector("#footer2");
+        if (footer) {
+          const headerBox = document.querySelector(".header-box");
+          const headerHeight = headerBox ? headerBox.offsetHeight : 0;
+          const rect = footer.getBoundingClientRect();
+          window.scrollTo({ top: rect.top + window.scrollY - headerHeight, behavior: "smooth" });
+          triggerHeaderUpdate();
+        }
+        return;
+      }
+
+    });
+  });
+
+});
+
+
+/* =========================
+   6. ヘッダー表示切替制御
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const siteTitle = document.getElementById("site-title");
+  const siteDesc  = document.getElementById("site-desc");
+
+  if (!siteTitle || !siteDesc) return;
+
+  function updateHeader() {
+
+    const scrollY = window.scrollY;
+
+    if (scrollY < 80) {
+      showLogo();
+      return;
+    }
+
+    let activeSection = null;
+    const viewportMiddle = window.innerHeight / 2;
+    const sections = document.querySelectorAll("[data-title]");
+
+    sections.forEach(section => {
+
+      const style = window.getComputedStyle(section);
+      if (style.display === "none" || style.visibility === "hidden") return;
+
+      const rect = section.getBoundingClientRect();
+
+      // Safari対応の判定
+      if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
+        activeSection = section;
+      }
+
+      // 最下部救済
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
+        activeSection = sections[sections.length - 1];
+      }
+
+    });
+
+    if (activeSection) {
+      showDesc(
+        activeSection.dataset.title,
+        activeSection.dataset.desc || ""
+      );
+    } else {
+      showLogo();
+    }
   }
-  showSwipeGuide();
-};
 
-// 横長モーダル
-const originalOpenWideModal = window.openWideModal;
-window.openWideModal = function(images) {
-  if (typeof originalOpenWideModal === "function") {
-    originalOpenWideModal(images);
+  function showLogo() {
+    siteTitle.style.opacity = "1";
+    siteTitle.style.visibility = "visible";
+    siteDesc.style.opacity = "0";
+    siteDesc.style.visibility = "hidden";
   }
-  showSwipeGuide();
-};
 
+  function showDesc(title, desc) {
+    siteTitle.style.opacity = "0";
+    siteTitle.style.visibility = "hidden";
+    siteDesc.innerHTML =
+      `<span class="desc-title">${title}</span>
+       <span class="desc-text">${desc}</span>`;
+    siteDesc.style.opacity = "1";
+    siteDesc.style.visibility = "visible";
+  }
 
+  // 他の処理から呼び出せるようにグローバル関数に登録
+  window.triggerUpdateHeader = updateHeader;
 
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  window.addEventListener("resize", updateHeader);
+
+  document.querySelectorAll('input[name="tabset"]').forEach(tab => {
+    tab.addEventListener("change", () => {
+      setTimeout(updateHeader, 50);
+    });
+  });
+
+  updateHeader();
+
+});
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("mojiji-main-video");
 
-  <script>
-    // ローダー処理
-    const loader = document.getElementById('loader');
-    const startTime = Date.now();
-    window.addEventListener('load', () => {
-      const elapsed = Date.now() - startTime;
-      const remaining = 3000 - elapsed;
-      setTimeout(() => {
-        loader.classList.add('fade-out');
-        setTimeout(() => loader.remove(), 500);
-      }, remaining > 0 ? remaining : 0);
-    });
-
-    // スライドショー制御
-    const slideTrack = document.getElementById('slideTrack');
-    const toggleBtn = document.getElementById('toggleBtn');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const slides = slideTrack.children;
-    let currentIndex = 0;
-    let isPaused = false;
-    let autoSlide;
-
-    // 自動スライド開始
-    function startAutoSlide() {
-      if (!autoSlide) {
-        autoSlide = setInterval(showNextSlide, 3000);
-        toggleBtn.textContent = '⏸';
-        isPaused = false;
-      }
-    }
-
-    // 自動スライド停止
-    function pauseSlideshow() {
-      if (autoSlide) {
-        clearInterval(autoSlide);
-        autoSlide = null;
-      }
-      isPaused = true;
-      toggleBtn.textContent = '▶';
-    }
-
-    function updateSlidePosition() {
-      slideTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    function showNextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateSlidePosition();
-    }
-
-    function showPrevSlide() {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updateSlidePosition();
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      if (isPaused) {
-        startAutoSlide();
-      } else {
-        pauseSlideshow();
-      }
-    });
-
-    nextBtn.addEventListener('click', () => {
-      showNextSlide();
-      if (!isPaused) {
-        // 自動スライドリセット（クリック後も自動スライド継続）
-        pauseSlideshow();
-        startAutoSlide();
-      }
-    });
-
-    prevBtn.addEventListener('click', () => {
-      showPrevSlide();
-      if (!isPaused) {
-        pauseSlideshow();
-        startAutoSlide();
-      }
-    });
-
-    // 初期自動スライド開始
-    startAutoSlide();
-
-    // ギャラリーデータ
-    const galleries = {
-      vege: Array.from({ length: 22 }, (_, i) => `img/vege${i + 1}.jpg`),
-      AHO: Array.from({ length: 9 }, (_, i) => `img/AHO-${String(i + 1).padStart(2, '0')}.jpg`),
-      IK: ['img/IK-01.jpg', 'img/IK-02.jpg', 'img/IK-03.jpg','img/IK-04.jpg'],
-      ON: Array.from({ length: 6}, (_, i) => `img/ON-${String(i + 1).padStart(2, '0')}.jpg`),
-      jap: Array.from({ length: 4}, (_, i) => `img/jap-${String(i + 1).padStart(2, '0')}.jpg`),
-      kai: Array.from({ length: 6 }, (_, i) => `img/kai-${String(i + 1).padStart(2, '0')}.jpg`)
+  // 1. 動画の自動再生/停止制御 (Intersection Observer)
+  if (video) {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3
     };
 
-    // モーダル要素
-    const modal = document.getElementById('galleryModal');
-    const modalImage = document.getElementById('galleryImage');
-    const modalPrevBtn = document.getElementById('modalPrev');
-    const modalNextBtn = document.getElementById('modalNext');
-    const modalCloseBtn = document.getElementById('modalClose');
-
-    // 横長モーダル要素
-    const wideSlideshow = document.getElementById('wideSlideshow');
-    const wideScrollContainer = document.querySelector('.wide-scroll-container');
-    const widePrevBtn = document.querySelector('.wide-prev');
-    const wideNextBtn = document.querySelector('.wide-next');
-    const wideCloseBtn = document.querySelector('.wide-slideshow .close-btn');
-
-    // 通常モーダルを開く関数
-    let modalGallery = [];
-    let modalIndex = 0;
-    function openModal(name) {
-  modalGallery = galleries[name] || [];
-  if (!modalGallery.length) return;
-  modalIndex = 0;
-  modalImage.src = modalGallery[modalIndex];
-  modal.style.display = 'flex';
-
-  // ✅ 左右ボタンを表示
-  document.getElementById('modalPrev').style.display = 'block';
-  document.getElementById('modalNext').style.display = 'block';
-
-  pauseSlideshow();
-		
-		modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  pauseSlideshow();
-
-  // ← モーダル開いた直後に表示
-  testHint();
-}
-
-
-
-    function closeModal() {
-      modal.style.display = 'none';
-      resumeSlideshowIfNoModal(); // 閉じたらスライドショー再開判定
-    }
-
-    function modalNext() {
-      modalIndex = (modalIndex + 1) % modalGallery.length;
-      modalImage.src = modalGallery[modalIndex];
-    }
-
-    function modalPrev() {
-      modalIndex = (modalIndex - 1 + modalGallery.length) % modalGallery.length;
-      modalImage.src = modalGallery[modalIndex];
-    }
-
-    // 横長モーダルを開く関数
-    function openWideModal(images) {
-      wideScrollContainer.innerHTML = '';
-      images.forEach(src => {
-        const img = document.createElement('img');
-        img.src = src;
-        wideScrollContainer.appendChild(img);
-      });
-      wideSlideshow.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      pauseSlideshow(); // 開いたらスライドショー停止
-    }
-
-    // 閉じたら再開判定
-    function resumeSlideshowIfNoModal() {
-      if (modal.style.display !== 'flex' && !wideSlideshow.classList.contains('active')) {
-        startAutoSlide();
-      }
-    }
-
-    // モーダルナビゲーションイベント
-    modalNextBtn.addEventListener('click', modalNext);
-    modalPrevBtn.addEventListener('click', modalPrev);
-    modalCloseBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', e => {
-      if (e.target === modal) closeModal();
-    });
-
-    // キーボード操作
-    document.addEventListener('keydown', e => {
-      if (modal.style.display === 'flex') {
-        if (e.key === 'ArrowRight') modalNext();
-        else if (e.key === 'ArrowLeft') modalPrev();
-        else if (e.key === 'Escape') closeModal();
-      }
-      if (wideSlideshow.classList.contains('active')) {
-        if (e.key === 'Escape') {
-          closeWideModal();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play().catch(error => {
+            console.log("自動再生がブロックされました:", error);
+          });
+        } else {
+          video.pause();
         }
-      }
-    });
+      });
+    }, observerOptions);
 
-    // 横長モーダルのナビゲーション
-    const scrollAmount = 400;
-    widePrevBtn.addEventListener('click', () => {
-      wideScrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-    wideNextBtn.addEventListener('click', () => {
-      wideScrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-    wideCloseBtn.addEventListener('click', () => {
-      closeWideModal();
-    });
-    wideSlideshow.addEventListener('click', e => {
-      if (e.target === wideSlideshow) {
-        closeWideModal();
-      }
-    });
+    observer.observe(video);
+  }
 
-    function closeWideModal() {
-      wideSlideshow.classList.remove('active');
-      document.body.style.overflow = '';
-      resumeSlideshowIfNoModal();
-    }
+  // 2. グリッド画像生成＆スライド機能付きモーダル
+  const gridContainer = document.getElementById("mojiji-grid");
+  const modal = document.getElementById("mojiji-modal");
+  const modalImg = document.getElementById("mojiji-modal-img");
+  const modalClose = document.getElementById("mojiji-modal-close");
+  const btnPrev = document.getElementById("mojiji-modal-prev");
+  const btnNext = document.getElementById("mojiji-modal-next");
 
-slideTrack.querySelectorAll('img').forEach(img => {
-  img.addEventListener('click', () => {
-    const galleryName = img.getAttribute('data-gallery');
-    if (!galleryName) return;
+  if (!gridContainer || !modal) return;
 
-    if (galleryName === 'IK') {
-      openWideModal(galleries[galleryName]);
-    } else {
-      openModal(galleryName);
-    }
+  const totalImages = 117;
+  let currentIndex = 1; // 現在表示中の画像番号 (1 ~ 117)
+
+  // 117枚の画像をグリッド生成
+  let htmlContent = "";
+  for (let i = 1; i <= totalImages; i++) {
+    htmlContent += `<div class="mojiji-grid-item">
+      <img src="img/mo${i}.png" data-index="${i}" loading="lazy" alt="MOJIJI ${i}">
+    </div>`;
+  }
+  gridContainer.innerHTML = htmlContent;
+
+  // 指定インデックスの画像を表示更新する関数
+  function showImage(index) {
+    if (index < 1) index = totalImages; // 最初の画像の前の場合は最後へループ
+    if (index > totalImages) index = 1; // 最後の画像の次の場合は最初へループ
+
+    currentIndex = index;
+    modalImg.src = `img/mo${currentIndex}.png`;
+    modalImg.classList.remove("is-zoomed");
+  }
+
+  // 画像クリックでモーダル表示
+  gridContainer.addEventListener("click", (e) => {
+    const targetImg = e.target.closest("img");
+    if (!targetImg) return;
+
+    const index = parseInt(targetImg.dataset.index, 10);
+    showImage(index);
+
+    modal.classList.add("show");
+    modal.scrollTop = 0;
   });
-});
 
+  // 前へ / 次へ ボタンイベント
+  if (btnPrev) {
+    btnPrev.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showImage(currentIndex - 1);
+    });
+  }
 
-// 🔁 表示エリア管理
-const sections = {
-  comicArtDisplay: document.getElementById('comicArtDisplay'),
-  comedyArtDisplay: document.getElementById('comedyArtDisplay'),
-  japaneseArtDisplay: document.getElementById('japaneseArtDisplay'),
-  other: document.getElementById('other'),
-};
+  if (btnNext) {
+    btnNext.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showImage(currentIndex + 1);
+    });
+  }
 
-function clearOthers(exceptId) {
-  Object.keys(sections).forEach(id => {
-    if (id !== exceptId) {
-      sections[id].innerHTML = '';
-    }
+  // モーダル画像クリックで拡大ズーム切替
+  modalImg.addEventListener("click", (e) => {
+    e.stopPropagation();
+    modalImg.classList.toggle("is-zoomed");
   });
-}
 
-document.getElementById('comicArt').addEventListener('click', () => {
-  const display = sections.comicArtDisplay;
-  if (display.innerHTML.trim() !== '') {
-    display.innerHTML = '';
-  } else {
-    clearOthers('comicArtDisplay');
-    display.innerHTML = '<span class="clickable-text hover-slide" data-gallery="vege">・VEGETAWARS</span>';
-    attachGalleryEvents();
+  // 閉じる処理
+  function closeModal() {
+    modal.classList.remove("show");
+    setTimeout(() => {
+      modalImg.src = "";
+      modalImg.classList.remove("is-zoomed");
+    }, 200);
   }
-});
 
-document.getElementById('comedyArt').addEventListener('click', () => {
-  const display = sections.comedyArtDisplay;
-  if (display.innerHTML.trim() !== '') {
-    display.innerHTML = '';
-  } else {
-    clearOthers('comedyArtDisplay');
-    display.innerHTML = '<span class="clickable-text hover-slide" data-gallery="AHO">・あほん</span>';
-    attachGalleryEvents();
-  }
-});
+  if (modalClose) modalClose.addEventListener("click", closeModal);
 
-document.getElementById('japaneseArt').addEventListener('click', () => {
-  const display = sections.japaneseArtDisplay;
-  if (display.innerHTML.trim() !== '') {
-    display.innerHTML = '';
-  } else {
-    clearOthers('japaneseArtDisplay');
-    display.innerHTML = `
-      <span class="clickable-text hover-slide" data-gallery="IK">・いきもじ</span><br>
-      <span class="clickable-text hover-slide" data-gallery="kai">・怪欲</span><br>
-      <span class="clickable-text hover-slide" data-gallery="jap">・日本満開</span>
-    `;
-    attachGalleryEvents();
-  }
-});
-
-document.getElementById('otherART').addEventListener('click', () => {
-  const display = sections.other;
-  if (display.innerHTML.trim() !== '') {
-    display.innerHTML = '';
-  } else {
-    clearOthers('other');
-    display.innerHTML = '<span class="clickable-text hover-slide" data-gallery="ON">・2019~2025</span>';
-    attachGalleryEvents();
-  }
-});
-
-
-window.addEventListener('DOMContentLoaded', () => {
-  const elements = document.querySelectorAll('p, a, span, .name, .clickable-text');
-  elements.forEach(el => {
-    if (el.textContent.trim() !== '') {
-      el.classList.add('hover-slide');
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal || e.target.classList.contains("mojiji-modal-content")) {
+      closeModal();
     }
   });
-});
-function attachGalleryEvents() {
-  const clickableTexts = document.querySelectorAll('.clickable-text');
-  clickableTexts.forEach(el => {
-    el.addEventListener('click', () => {
-      const galleryName = el.getAttribute('data-gallery');
-      if (galleryName === 'IK') {
-        openWideModal(galleries[galleryName]);
-      } else {
-        openModal(galleryName);
-      }
-    });
-  });
-}
-// JOy art クリック時
-document.getElementById('joyArtTrigger').addEventListener('click', function () {
-  const modal = document.getElementById('galleryModal');
-  const modalImage = document.getElementById('galleryImage');
 
-  modalImage.src = 'img/img-07.jpg';
-  modal.style.display = 'flex';
+  // キーボード操作（Escで閉じる、左右キーで画像切り替え）
+  document.addEventListener("keydown", (e) => {
+    if (!modal.classList.contains("show")) return;
 
-  // ナビゲーション非表示
-  document.getElementById('modalPrev').style.display = 'none';
-  document.getElementById('modalNext').style.display = 'none';
-
-  // スライドショー停止
-   // スライドショー停止
-  pauseSlideshow(); // ← ✅定義済みの関数に変更
-
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const toggle = document.querySelector(".menu-toggle");
-  const menu = document.querySelector(".menu-items");
-  const overlay = document.querySelector(".menu-overlay");
-
-  // ☰ ボタンクリックで開閉
-  toggle.addEventListener("click", () => {
-    menu.classList.toggle("show");
-    overlay.classList.toggle("show");
-  });
-
-  // オーバーレイをクリックしたら閉じる
-  overlay.addEventListener("click", () => {
-    menu.classList.remove("show");
-    overlay.classList.remove("show");
-  });
-
-  // メニュー内リンクをクリックしたら閉じる
-  document.querySelectorAll(".menu-items a").forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("show");
-      overlay.classList.remove("show");
-    });
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+    if (e.key === "ArrowRight") showImage(currentIndex + 1);
   });
 });
-// ハンバーガーメニューのリンク → ギャラリーを開く
-document.querySelectorAll('.menu-items a[data-gallery]').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const galleryName = link.getAttribute('data-gallery');
-    if (galleryName === 'IK') {
-      openWideModal(galleries[galleryName]); // 横長モーダル
-    } else {
-      openModal(galleryName); // 通常モーダル
-    }
-    // メニューを閉じる
-    document.querySelector('.menu-items').classList.remove('show');
-    document.querySelector('.menu-overlay').classList.remove('show');
-  });
-});
-
-// スライドショー画像をスマホ用に差し替え
-function updateSlideshowImages() {
-  const isMobile = window.innerWidth <= 1200; // スマホ判定
-
-  const slideImages = document.querySelectorAll('#slideTrack img');
-  slideImages.forEach((img, index) => {
-    const original = `img/img-0${index + 1}.jpg`;
-    const small = `img/Simg-0${index + 1}.jpg`;
-
-    if (isMobile) {
-      // スマホ用に切り替え
-      if (img.src.includes(original)) {
-        img.src = small;
-      }
-    } else {
-      // PC用に戻す
-      if (img.src.includes(`Simg-0${index + 1}.jpg`)) {
-        img.src = original;
-      }
-    }
-  });
-}
-
-// 読み込み時とリサイズ時に実行
-window.addEventListener('DOMContentLoaded', updateSlideshowImages);
-window.addEventListener('resize', updateSlideshowImages);
-let touchStartX = 0;
-let touchEndX = 0;
-
-function handleSwipe() {
-  const swipeThreshold = 50; // どれくらい動いたらスワイプと判定するか(px)
-  if (touchEndX < touchStartX - swipeThreshold) {
-    // 左にスワイプ → 次の画像
-    modalNext();
-  }
-  if (touchEndX > touchStartX + swipeThreshold) {
-    // 右にスワイプ → 前の画像
-    modalPrev();
-  }
-}
-
-// モーダル画像にタッチイベントを登録
-modalImage.addEventListener('touchstart', e => {
-  touchStartX = e.changedTouches[0].screenX;
-});
-
-modalImage.addEventListener('touchend', e => {
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-});
-	  // ===== 横長モーダル (#wideSlideshow) 慣性スクロール対応 =====
-let wideStartX = 0;
-let wideScrollLeft = 0;
-
-wideScrollContainer.addEventListener("touchstart", e => {
-  wideStartX = e.touches[0].pageX;
-  wideScrollLeft = wideScrollContainer.scrollLeft;
-}, { passive: true });
-
-wideScrollContainer.addEventListener("touchmove", e => {
-  const dx = e.touches[0].pageX - wideStartX;
-  wideScrollContainer.scrollLeft = wideScrollLeft - dx;
-}, { passive: true });
-	 
-	  
-	  
-function testHint() {
-  // 既存を削除
-  document.querySelectorAll('.swipe-hint').forEach(el => el.remove());
-
-  // 新規作成
-  const hint = document.createElement('div');
-  hint.className = 'swipe-hint';
-  hint.textContent = 'スワイプできます →';
-
-  // 画面固定スタイル
-  hint.style.position = 'fixed';
-  hint.style.top = '50%';
-hint.style.left = '50%';
-hint.style.transform = 'translate(-50%, -50%)';
-  hint.style.background = 'rgba(0,0,0,0.7)';
-  hint.style.color = '#fff';
-  hint.style.padding = '6px 12px';
-  hint.style.borderRadius = '6px';
-  hint.style.zIndex = '99999';
-  hint.style.fontSize = '16px';
-  hint.style.opacity = '1';
-  hint.style.transition = 'opacity 0.5s';
-
-  document.body.appendChild(hint);
-
-  // 2秒後フェードアウトして削除
-  setTimeout(() => {
-    hint.style.opacity = '0';
-    setTimeout(() => hint.remove(), 600);
-  }, 1000);
-}
-
-
-
-
 </script>
+	<!-- 拡大表示（モーダル）用のHTML構造 -->
+<div class="mojiji-modal" id="mojiji-modal">
+  <span class="mojiji-modal-close" id="mojiji-modal-close">&times;</span>
+ <!-- 前へ / 次へ ボタン -->
+  <button class="mojiji-modal-nav mojiji-prev" id="mojiji-modal-prev">&#10094;</button>
+  <button class="mojiji-modal-nav mojiji-next" id="mojiji-modal-next">&#10095;</button>
+
+  <div class="mojiji-modal-content">
+    <img class="mojiji-modal-img" id="mojiji-modal-img" src="" alt="Enlarged Image">
+  </div>
+</div>
 </body>
 </html>
